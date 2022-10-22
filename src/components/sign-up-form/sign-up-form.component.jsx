@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
@@ -56,7 +56,8 @@ export default function SignInForm() {
 
   return (
     <div className="sign-up-container">
-      <h2>Sign up with your email and password</h2>
+      <h2>Don't have and account?</h2>
+      <p>Sign up with your email and password</p>
       <form
         onSubmit={(event) => {
           handleSubmit(event);
