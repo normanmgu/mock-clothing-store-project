@@ -8,7 +8,7 @@ import CartDropdown from "../../components/cart-dropdown/cart-dropdown.component
 import { UserContext } from "../../contexts/user.context";
 import { CartContext } from "../../contexts/cart.context";
 
-import "./navigation.styles.scss";
+import {NavigationContainer, NavLinks, NavLink, LogoContainer} from "./navigation.styles.jsx";
 
 const Navigation = () => {
   const { currentUser } = useContext(UserContext);
@@ -16,27 +16,27 @@ const Navigation = () => {
 
   return (
     <Fragment>
-      <div className="navigation">
-        <Link to="/">
+      <NavigationContainer>
+        <LogoContainer to="/">
           <XLogo className="logo" />
-        </Link>
-        <div className="nav-links-container">
+        </LogoContainer>
+        <NavLinks className="nav-links-container">
           {currentUser ? (
-            <span onClick={signOutUser} className="nav-line">
+            <NavLink as="span" onClick={signOutUser}>
               LOG OUT
-            </span>
+            </NavLink>
           ) : (
-            <Link className="nav-link" to="/auth">
+            <NavLink className="nav-link" to="/auth">
               SIGN IN
-            </Link>
+            </NavLink>
           )}
-          <Link className="nav-link" to="/shop">
+          <NavLink className="nav-link" to="/shop">
             SHOP
-          </Link>
+          </NavLink>
           <CartIcon />
-        </div>
+        </NavLinks>
         { isCartOpen && <CartDropdown />}
-      </div>
+      </NavigationContainer>
 
       <Outlet />
     </Fragment>
